@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+
+    <style>
+        /* CSS */
+        * {
+            font-family: Cambria;
+        }
+
+        /* navbar */
+        .navbar-color {
+            /* background-color: rgb(63, 149, 229); */
+            background-color: rgb(43, 115, 179);
+            border-color: #E7E7E7;
+            padding-bottom: 10px;
+        }
+
+        .navbar-custom {
+            color: #FFFFFF;
+            /* color: rgb(41, 40, 40); */
+        }
+
+        .logo {
+            background: url('/static/images/logo2.jpg') no-repeat;
+            background-size: 100%;
+            background-size: cover;
+
+            position: absolute;
+            left: 50%;
+            margin-left: -50px !important;
+            /* 50% of your logo width */
+            display: block;
+
+            border-radius: 5%;
+            width: 118px;
+            height: 56px;
+        }
+
+
+        .imgHeader {
+            /*main box*/
+            background-color: gray;
+            background: url('/static/images/inside_rv.jpg') no-repeat;
+            background-size: 100%;
+            margin-top: 51px;
+            width: auto;
+            height: 400px;
+        }
+
+        .myBtn {
+            color: aliceblue;
+            font-size: 30px;
+            cursor: pointer;
+        }
+
+        .myBtn:hover {
+            color: gray;
+            font-size: 30px;
+            cursor: pointer;
+        }
+
+        .header {
+            margin-left: 20px;
+        }
+
+        .bigLogo {
+            /*main box*/
+            /* background-color: rgb(63, 149, 229); */
+            border-radius: 5%;
+            padding-top: 60px;
+            width: auto;
+            height: 300px;
+            text-align: center;
+            padding-bottom: 20px;
+            display: flex;
+            align-self: flex-end;
+        }
+
+        .theLogo {
+            background: url('/static/images/logo2.jpg') no-repeat;
+            background-size: 100%;
+            background-size: cover;
+            border-radius: 10px;
+            height: 200px;
+            width: 420px;
+            margin: auto;
+
+        }
+
+        .ApptButtonBox {
+            /*main box*/
+            /* background-color: #3F95E5; */
+            width: auto;
+            height: 280px;
+            text-align: center;
+        }
+
+        .ApptButtonBox h1 {
+            padding-top: 50px;
+        }
+
+        .ApptButtonBox p {
+            padding-top: 10px;
+        }
+
+        .button {
+            background-color: #3F95E5;
+            margin: auto;
+            width: 150px;
+            height: 40px;
+            border-radius: 10px;
+        }
+
+        .button:hover {
+            background-color: #77bdff;
+            margin: auto;
+            width: 150px;
+            height: 40px;
+            border-radius: 10px;
+        }
+
+        .button a {
+            color: aliceblue;
+            text-decoration: none;
+        }
+
+        .line {
+            background-color: #0C3177;
+            width: auto;
+            height: 2px;
+            margin-top: 20px;
+        }
+
+        .yelpBox {
+            /*main box*/
+            margin-top: 10px;
+            width: auto;
+            /* height: 280px; */
+            height: auto;
+            align-items: flex-start;
+            flex-direction: row
+        }
+
+        .test {
+            text-align: center;
+            width: auto;
+            height: 55px;
+        }
+
+        .boxContainer {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .box {
+            width: 240px;
+            height: 200px;
+            margin: auto;
+        }
+
+        .boxName {
+            color: rgb(4, 4, 192);
+        }
+
+
+        .mapBox {
+            /*main box*/
+            background-color: #3F95E5;
+            align-items: flex-start;
+            margin-top: 10px;
+            width: auto;
+            height: auto;
+            padding-top: 20px;
+            display: flex;
+            justify-content: center;
+            flex-direction: row;
+        }
+
+        .leftBox {
+            background-color: gray;
+            background: url('/static/images/scv_map2.png') no-repeat;
+            background-size: 100%;
+            width: 500px;
+            height: 350px;
+            margin: auto;
+            margin-top: 20px;
+        }
+
+        .rightBox {
+            color: aliceblue;
+            text-align: center;
+            width: 450px;
+            height: 300px;
+            margin: auto;
+        }
+
+        .rightBox h2 {
+            font-size: 25px;
+        }
+
+        .rightBox h3 {
+            font-size: 20px;
+        }
+
+        .movingRV {
+            background: url('/static/images/rvGIF.gif') no-repeat;
+            background-size: 100%;
+            width: 200px;
+            height: 200px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+
+
+
+
+
+
+        .sidenav {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            /* background-color: #111; */
+            background-color: rgb(137, 137, 148);
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+        }
+
+        .sidenav a {
+            padding: 8px 8px 8px 32px;
+            text-decoration: none;
+            font-size: 25px;
+            color: aliceblue;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .sidenav a:hover {
+            color: #f1f1f1;
+        }
+
+        .sidenav .closebtn {
+            position: absolute;
+            top: 0;
+            right: 25px;
+            font-size: 36px;
+            margin-left: 50px;
+        }
+
+        .backbackimg {
+            background-image: url('/static/images/inside_rv.jpg');
+            background-attachment: fixed;
+            background-size: cover;
+            height: 400px;
+            width: auto;
+        }
+
+
+        .bottomBar {
+            background-color: rgb(36, 36, 36);
+            width: auto;
+            height: 320px;
+            display: flex;
+            align-self: flex-end;
+        }
+
+        .bottomBarBox {
+            /* background-color: red; */
+            color: aliceblue;
+            text-align: center;
+            margin: auto;
+            width: auto;
+            height: auto;
+        }
+
+        .bottomBarBox h3 {
+            color: rgb(63, 149, 229);
+        }
+
+        .mediaBox {
+            /* background-color: red; */
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+        }
+
+        .mediaBox span {
+            font-size: 30px;
+        }
+
+        .yelp {
+            color: red;
+        }
+
+
+
+        /* Side menu button */
+        .menu-btn {
+            margin-top: 5px;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            transition: all .5s ease-in-out;
+            /* border: 3px solid #fff; */
+        }
+
+        .menu-btn__burger {
+            width: 30px;
+            height: 5px;
+            background: #fff;
+            /* background: rgb(41, 40, 40); */
+            border-radius: 5px;
+            /* box-shadow: 0 2px 5px rgba(255, 101, 47, .2); */
+            transition: all .5s ease-in-out;
+        }
+
+        .menu-btn__burger::before,
+        .menu-btn__burger::after {
+            content: '';
+            position: absolute;
+            width: 30px;
+            height: 5px;
+            background: #fff;
+            /* background: rgb(41, 40, 40); */
+            border-radius: 5px;
+            /* box-shadow: 0 2px 5px rgba(255, 101, 47, .2); */
+            transition: all .5s ease-in-out;
+        }
+
+        .menu-btn__burger::before {
+            transform: translateY(-16px);
+        }
+
+        .menu-btn__burger::after {
+            transform: translateY(16px);
+        }
+
+        /* ANIMATION */
+        .menu-btn.open .menu-btn__burger {
+            transform: translateX(-50px);
+            background: transparent;
+            box-shadow: none;
+        }
+
+        .menu-btn.open .menu-btn__burger::before {
+            transform: rotate(45deg) translate(35px, -35px);
+        }
+
+        .menu-btn.open .menu-btn__burger::after {
+            transform: rotate(-45deg) translate(35px, 35px);
+        }
+
+        /* side menu button  */
+
+
+
+
+
+
+
+
+        @media only screen and (max-width: 600px) {
+
+            .menu-btn {
+                float: left;
+                margin-top: 5px;
+                position: relative;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                position: absolute;
+                width: 40px;
+                height: 40px;
+                cursor: pointer;
+                transition: all .5s ease-in-out;
+                /* border: 3px solid #fff; */
+            }
+
+            .logo {
+                background: url('/static/images/logo2.jpg') no-repeat;
+                background-size: 100%;
+                background-size: cover;
+                position: absolute;
+                left: 50%;
+                margin-left: -50px !important;
+                /* 50% of your logo width */
+                display: block;
+                border-radius: 5%;
+                width: 93px;
+                height: 44px;
+            }
+
+            .boxContainer {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .box {
+                width: auto;
+                height: 120px;
+                margin: auto;
+            }
+
+            .leftBox {
+                background-color: gray;
+                margin: auto;
+                width: 410px;
+                /* width: auto; */
+                height: 250px;
+            }
+
+            .rightBox {
+                color: aliceblue;
+                text-align: center;
+                padding-top: 50px;
+                width: auto;
+                height: 400px;
+                margin: auto;
+            }
+
+            .backbackimg {
+                background-image: url('/static/images/iphoneRV3.jpg');
+                background-attachment: fixed;
+                background-size: cover;
+                height: 400px;
+                width: auto;
+            }
+
+
+        }
+    </style>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+    <title>SC RV</title>
+</head>
+
+<body>
+    <!-- NAV BAR -->
+    <nav class="navbar navbar-color navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+
+                <!--Side Menu-->
+                <div id="myBtn" class="menu-btn">
+                    <div class="menu-btn__burger"></div>
+                </div>
+                <!--Side Menu-->
+
+            </div>
+
+            <div class="hiddenDiv">
+                <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+
+                    <!-- Right -->
+                    <ul id="my-content" class="nav navbar-nav navbar-right navbar-custom">
+
+                        {% if request.session.userid == None %}
+                        <li>
+                            <a class="navbar-custom" href="/login"><span
+                                    class="glyphicon glyphicon-user navbar-custom"></span>Sign In</a>
+                        </li>
+                        {% else  %}
+                        <li class="dropdown">
+                            <a class="dropdown-toggle navbar-custom" data-toggle="dropdown" href="#">Hello {{user.fname}}
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="/account/{{user.id}}">ACCOUNT</a></li>
+                                <li><a href="/logout">LOGOUT</a></li>
+                            </ul>
+                        </li>
+                        {% endif %}
+
+                        <li>
+                            <a class="navbar-custom" href="/contactUs"><span class="glyphicon"></span>Contact Us</a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+            <!--hidden div-->
+        </div>
+    </nav>
+    <!-- END OF NAV BAR -->
+
+
+    <!-- Side menu -->
+    {% if request.session.userid == None %}
+    <div id="mySidenav" class="sidenav">
+        <a href="/">Home</a>
+        <a href="/login">Sign In</a>
+        <a href="/appt">Appointment</a>
+        <a href="/about">About</a>
+        <a href="/contactUs">Contact Us</a>
+    </div>
+    {% else  %}
+    <div id="mySidenav" class="sidenav">
+        <a href="/">Home</a>
+        <a href="/account/{{user.id}}">Account</a>
+        <a href="/appt">Appointment</a>
+        <a href="/about">About</a>
+        <a href="/contactUs">Contact Us</a>
+    </div>
+    {% endif %}
+
+    <script> //JavaScript
+        document.getElementById("myBtn").addEventListener("click", toggleNav);
+
+        var Isopen = false
+        var menuBtn = document.querySelector('.menu-btn');
+
+        function toggleNav() {
+            if (Isopen == true) {
+                menuBtn.classList.remove('open'); //CSS change
+                return close();
+            }
+            else {
+                menuBtn.classList.add('open'); //CSS change
+                return open();
+            }
+        }
+        function open() {
+            Isopen = true;
+            document.getElementById("mySidenav").style.width = "250px";
+            document.getElementById("main").style.marginLeft = "250px";
+            document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+        }
+        function close() {
+            Isopen = false;
+            document.getElementById("mySidenav").style.width = "0";
+            document.getElementById("main").style.marginLeft = "0";
+            document.body.style.backgroundColor = "white";
+        }
+
+    </script>
+    <!-- Side menu -->
+
+
+    <!-- logo -->
+    <div class="bigLogo">
+        <div class="theLogo"></div>
+    </div>
+    <!-- logo -->
+
+
+
+
+    <!-- Appt Box -->
+    <div class="ApptButtonBox">
+        <h1>Schedule an Appointment</h1>
+        <p> Installation, pluming, electrical, and repairs. </p>
+        <p> <b>Please Note:</b> We do not handle chassis or engine work </p>
+
+        <div class="button">
+            <a href="/appt">
+                <p>Get put on the List</p>
+            </a>
+        </div>
+    </div>
+    <!-- Appt Box -->
+
+
+    <div class="backbackimg"></div>
+    <!--back img of scroll-->
+
+
+    <!-- yelp -->
+    <div class="yelpBox">
+        <div class="test">
+            <h1>Testimonials</h1>
+        </div>
+
+        <div class="boxContainer">
+
+            <div class="box">
+                <p>“Thank you Jose for a job well done. We appricate your hard work
+                    and honestly. We hope we don't have to call you again, thats the
+                    best recommendation for you doing the job right!”</p>
+                <p class="boxName"> - Kathy S.</p>
+            </div>
+            <div class="box">
+                <p>“Your experience really showed and we like how you made the extra
+                    effort to make us happy on the other changes you added on. Thanks
+                    so much for your hard work!”</p>
+                <p class="boxName"> - Steven T.</p>
+            </div>
+            <div class="box">
+                <p>“WOW! You guys were fast and perfect! you made my life so much
+                    easier that things are fixed and organzied for me. Can’t believe you
+                    did this and the price was right. Thanks guys”</p>
+                <p class="boxName"> - Sandra H.</p>
+            </div>
+            <div class="box">
+                <p>“Jose, when I called you, I knew you were the right guy for the job.
+                    I would tell everyone I know to hire you for anything that has to do
+                    with fixing and installing anything with RV's. We appreciate the job
+                    well done and the loyallty you put into your work, it showed!”</p>
+                <p class="boxName"> - Benny F.</p>
+            </div>
+        </div>
+    </div>
+    <!-- yelp -->
+
+
+    <!-- map -->
+    <div class="mapBox">
+        <div class="boxContainer">
+            <div class="leftBox"></div>
+            <!--Image-->
+            <div class="rightBox">
+                <h2>We are a shop that comes to YOU!</h2>
+                <h3>We work all through out the Santa Clarita Valley. We also go to San Fernando, Burbank, and
+                    Northridge areas.</h3>
+                <div class="movingRV"></div>
+            </div>
+        </div>
+    </div>
+    <!-- map -->
+
+
+    <!-- bottom -->
+    <div class="bottomBar">
+        <div class="bottomBarBox">
+            <h3>CONTACT US</h3>
+            <h4>Business Number: (661)-618-1886</h4>
+            <h4>Fax Number: 661-362-8090</h4>
+            <h4>Email: scrv8@yahoo.com</h4>
+
+            <h3>SOCIAL MEDIA</h3>
+            <div class="mediaBox">
+                <a href="https://www.facebook.com/SantaClaritaRV" class="btn btn-social-icon btn-facebook">
+                    <span class="fa fa-facebook"></span>
+                </a>
+            </div>
+            <div class="mediaBox">
+                <a href="https://www.yelp.com/biz/santa-claritas-rv-mobile-service-santa-clarita?osq=RV+Mobile+Repair"
+                    class="btn btn-social-icon btn-yelp yelp">
+                    <span class="fa fa-yelp"></span>
+                </a>
+            </div>
+            <p>© 2020 Santa Clarita RV Mobile Service. All rights reserved.</p>
+        </div>
+    </div>
+
+</body>
+
+</html>

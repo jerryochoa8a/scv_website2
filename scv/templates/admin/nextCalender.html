@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            /* background-color: rgb(65, 71, 77); */
+        }
+
+        ul {
+            list-style-type: none;
+        }
+
+        body {
+            font-family: Verdana, sans-serif;
+        }
+
+        .month {
+            padding: 70px 25px;
+            width: 100%;
+            height: 20px;
+            background: #2B73B3;
+            text-align: center;
+        }
+
+        .month ul {
+            margin: 0;
+            padding: 0;
+        }
+
+        .month ul li {
+            color: white;
+            font-size: 20px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .month .prev {
+            float: left;
+            padding-top: 10px;
+        }
+
+        .month .next {
+            float: right;
+            padding-top: 10px;
+        }
+
+        .weekdays {
+            margin: 0;
+            padding: 10px 0;
+            background-color: #ddd;
+        }
+
+        .weekdays li {
+            display: inline-block;
+            width: 13.6%;
+            color: #666;
+            text-align: center;
+        }
+
+        .days {
+            padding: 10px 0;
+            background: #eee;
+            margin: 0;
+        }
+
+        .days li {
+            background-color: lightblue;
+            list-style-type: none;
+            display: inline-block;
+            width: 13.6%;
+            height: 100px;
+            text-align: center;
+            margin-bottom: 5px;
+            font-size: 12px;
+            color: #777;
+        }
+
+        .days li .active {
+            padding: 5px;
+            background: #1abc9c;
+            color: white !important
+        }
+
+        .jobs {
+            background-color: #2B73B3;
+            width: 20px;
+            height: 20px;
+        }
+
+        /* Add media queries for smaller screens */
+        @media screen and (max-width:720px) {
+
+            .weekdays li,
+            .days li {
+                width: 13.1%;
+            }
+        }
+
+        @media screen and (max-width: 420px) {
+
+            .weekdays li,
+            .days li {
+                width: 12.5%;
+            }
+
+            .days li .active {
+                padding: 2px;
+            }
+        }
+
+        @media screen and (max-width: 290px) {
+
+            .weekdays li,
+            .days li {
+                width: 12.2%;
+            }
+        }
+    </style>
+
+
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css">
+    <link rel="stylesheet" type="text/css" href="{'% static 'cal/css/styles.css' %}">
+    <title>Calender</title>
+</head>
+
+<body>
+
+    <div class="month">
+        <ul>
+            <a style="color: aliceblue;" href="/admin/calender" class="prev">&#10094; Back</a>
+            <li>
+                <span style="font-size:18px">{{month}}</span>
+            </li>
+        </ul>
+    </div>
+
+    <ul class="weekdays">
+        <li>Su</li>
+        <li>Mo</li>
+        <li>Tu</li>
+        <li>We</li>
+        <li>Th</li>
+        <li>Fr</li>
+        <li>Sa</li>
+    </ul>
+
+    <ul id="target" class="days"></ul>
+
+    <script>
+
+        var num = "{{endMonth}}";
+        var work = {{ work }};
+        var workName = {{ workName| safe}};
+        var weekday = {{ weekDay }};
+
+
+        for (var k = 0; k < weekday; k++) {
+            let box = document.createElement('li');
+
+            box.style.height = "130px";
+            box.style.display = "inline-block";
+            box.style.marginLeft = "5px";
+            box.style.backgroundColor = "#1F86AB";
+            target.appendChild(box);
+        }
+
+        for (var i = 0; i < num; i++) {
+            let target = document.querySelector("#target");
+            
+            let aTag = document.createElement('a');
+            let box = document.createElement('li');
+            let textBox = document.createElement('p');
+            let workNumBox = document.createElement('p');
+            let con = document.createElement('div');
+
+
+            aTag.href = "cal/info/" + (i + 1)
+            target.appendChild(aTag)
+
+            box.style.height = "130px";
+            box.style.display = "inline-block";
+            box.style.marginLeft = "5px";
+            box.style.backgroundColor = "#1F86AB";
+            aTag.appendChild(box);
+
+            textBox.textContent = i + 1
+            textBox.style.fontSize = "18px";
+            textBox.style.color = "white";
+            textBox.style.float = "left";
+            textBox.style.marginLeft = "10px"
+            textBox.style.backgroundColor = "#1F86AB";
+            box.appendChild(textBox);
+
+
+            var countNum = 0
+            for (var j = 0; j < work.length; j++) {
+                var temp = 0
+                if (i == work[j] - 1) {
+                    temp++
+                    countNum++
+
+                    workNumBox.textContent = countNum;
+                    workNumBox.style.fontSize = "16px";
+                    workNumBox.style.color = "black";
+                    workNumBox.style.marginRight = "10px"
+                    workNumBox.style.float = "right";
+                    workNumBox.style.backgroundColor = "#39F1CF";
+                    workNumBox.style.width = "20px";
+                    workNumBox.style.borderRadius = "100%"
+                    box.appendChild(workNumBox);
+
+                    con.style.width = "auto";
+                    con.style.height = "auto";
+                    // con.style.backgroundColor = "gray";
+                    con.style.flexDirection ="column";
+                    // con.style.marginTop = "10px";
+                    con.style.display = "flex";
+                    con.style.float = "right";
+                    box.appendChild(con)
+
+
+                    for (var t = 0; t != temp; t++) {
+                        console.log(t)
+                        console.log("temp" + temp)
+                        let workNameBox = document.createElement('div');
+
+
+                        workNameBox.textContent = workName[j];
+                        workNameBox.style.color = "white"
+                        workNameBox.style.width = "auto";
+                        // workNameBox.style.backgroundColor = "green"
+                        // workNameBox.style.marginTop = "50px"
+                        // workNameBox.style.float = "right";
+                        con.appendChild(workNameBox);
+                    }
+                }
+            }
+        }
+
+    </script>
+
+
+
+</body>
+
+</html>

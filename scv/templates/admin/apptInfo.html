@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+
+    <style>
+        /* CSS */
+        * {
+            font-family: Cambria;
+        }
+
+        /* navbar */
+        .navbar-color {
+            /* background-color: rgb(63, 149, 229); */
+            background-color: rgb(43, 115, 179);
+            border-color: #E7E7E7;
+            padding-bottom: 10px;
+        }
+
+        .navbar-custom {
+            color: #FFFFFF;
+        }
+
+
+        .sidenav {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            /* background-color: #111; */
+            /* background-color: rgb(63, 149, 229); */
+            background-color: rgb(137, 137, 148);
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+        }
+
+        .sidenav a {
+            padding: 8px 8px 8px 32px;
+            text-decoration: none;
+            font-size: 25px;
+            color: aliceblue;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .sidenav a:hover {
+            color: #f1f1f1;
+        }
+
+        .sidenav .closebtn {
+            position: absolute;
+            top: 0;
+            right: 25px;
+            font-size: 36px;
+            margin-left: 50px;
+        }
+
+        /* Side menu button */
+        .menu-btn {
+            margin-top: 5px;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            transition: all .5s ease-in-out;
+            /* border: 3px solid #fff; */
+        }
+
+        .menu-btn__burger {
+            width: 30px;
+            height: 5px;
+            background: #fff;
+            border-radius: 5px;
+            /* box-shadow: 0 2px 5px rgba(255, 101, 47, .2); */
+            transition: all .5s ease-in-out;
+        }
+
+        .menu-btn__burger::before,
+        .menu-btn__burger::after {
+            content: '';
+            position: absolute;
+            width: 30px;
+            height: 5px;
+            background: #fff;
+            border-radius: 5px;
+            /* box-shadow: 0 2px 5px rgba(255, 101, 47, .2); */
+            transition: all .5s ease-in-out;
+        }
+
+        .menu-btn__burger::before {
+            transform: translateY(-16px);
+        }
+
+        .menu-btn__burger::after {
+            transform: translateY(16px);
+        }
+
+        /* ANIMATION */
+        .menu-btn.open .menu-btn__burger {
+            transform: translateX(-50px);
+            background: transparent;
+            box-shadow: none;
+        }
+
+        .menu-btn.open .menu-btn__burger::before {
+            transform: rotate(45deg) translate(35px, -35px);
+        }
+
+        .menu-btn.open .menu-btn__burger::after {
+            transform: rotate(-45deg) translate(35px, 35px);
+        }
+
+        /* side menu button  */
+        /*//////////////////////////////////////////////////////////////*/
+
+
+
+
+
+        .screenBox {
+            /* background-color: lightblue; */
+            width: auto;
+            height: auto;
+            padding-bottom: 50px;
+            padding-top: 100px;
+        }
+
+        .nameBox {
+            background-color: aliceblue;
+            margin-bottom: 20px;
+            margin-left: 20px;
+            float: left;
+            width: 60%;
+            border-radius: 5px;
+        }
+
+        .nameBox h2 {
+            /* display: inline-block; */
+            margin-left: 30px;
+        }
+
+        .descBox {
+            background-color: aliceblue;
+            margin-left: 20px;
+            width: 60%;
+            margin-top: 180px;
+            padding-bottom: 10px;
+            border-radius: 5px;
+        }
+
+        .actionBox {
+            background-color: aliceblue;
+            margin-right: 20px;
+            width: 30%;
+            float: right;
+            padding-bottom: 100px;
+            height: auto;
+            border-radius: 10%;
+        }
+
+        .buttonBox {
+            /* background-color: red; */
+            margin: auto;
+            width: 150px;
+            height: 110px;
+        }
+
+
+        .labelBox {
+            background-color: rgb(43, 115, 179);
+            text-align: center;
+            color: aliceblue;
+            height: 30px;
+            width: 100%;
+        }
+
+        .button1 {
+            background-color: #3F95E5;
+            border-radius: 10px;
+            color: aliceblue;
+            width: 150px;
+            height: 40px;
+        }
+
+        .button1:hover {
+            background-color: #77bdff;
+            width: 150px;
+            height: 40px;
+            border-radius: 10px;
+        }
+
+        .button2 {
+            background-color: #3fe576;
+            border-radius: 10px;
+            color: black;
+            width: 150px;
+            height: 40px;
+        }
+
+        .button2:hover {
+            background-color: #75e79b;
+            width: 150px;
+            height: 40px;
+            border-radius: 10px;
+        }
+
+        .button3 {
+            background-color: #e53f4d;
+            border-radius: 10px;
+            color: aliceblue;
+            width: 150px;
+            height: 40px;
+        }
+
+        .button3:hover {
+            background-color: #fc0519;
+            width: 150px;
+            height: 40px;
+            border-radius: 10px;
+        }
+
+        .noteBox {
+            background-color: aliceblue;
+            margin-left: 20px;
+            margin-right: 20px;
+            width: auto;
+            margin-top: 30px;
+            border-radius: 5px;
+        }
+
+        /* Model(pop up) */
+
+        .bg-model {
+            width: 100%;
+            height: 100%;
+            padding-top: 50px;
+            background-color: rgba(0, 0, 0, 0.7);
+            position: absolute;
+            top: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            display: none;
+        }
+
+        .bg-model2 {
+            width: 100%;
+            height: 100%;
+            padding-top: 50px;
+            background-color: rgba(0, 0, 0, 0.7);
+            position: absolute;
+            top: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            display: none;
+        }
+
+        .model-content {
+            width: 500px;
+            /* height: 340px; */
+            height: auto;
+            background-color: rgb(255, 255, 255);
+            border-radius: 4px;
+            padding: 20px;
+            position: relative;
+        }
+
+        .model-content input {
+            width: 50%;
+            display: block;
+            margin: 15px auto;
+        }
+
+        .model-content button {
+            background-color: #3F95E5;
+            border-radius: 10px;
+            color: aliceblue;
+            display: block;
+            margin: 15px auto;
+            width: 100px;
+            height: 30px;
+        }
+
+        .model-content button:hover {
+            background-color: #77bdff;
+            display: block;
+            margin: 15px auto;
+            width: 100px;
+            height: 30px;
+            border-radius: 10px;
+        }
+
+        .close {
+            position: absolute;
+            color: black;
+            top: 0;
+            right: 14px;
+            font-size: 45px;
+            transform: rotate(45deg);
+        }
+
+        .cont {
+            display: flex;
+            flex-direction: row
+        }
+
+        .note {
+            width: 50%;
+            right: 20px;
+        }
+
+        .parts {
+            width: 50%;
+        }
+
+        .li-style {
+            list-style: none;
+            background-color: #2B73B3;
+            border: black 2px solid;
+            width: auto;
+            font-size: 24px;
+            margin-right: 30px;
+        }
+
+        .li-style input {
+            width: 20px;
+            height: 20px;
+        }
+
+        .li-style label {
+            margin-left: 10px;
+            color: aliceblue;
+        }
+    </style>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+    <title>Customer Info</title>
+</head>
+
+<body style="background-color: rgb(65, 71, 77);">
+    <!-- NAV BAR -->
+    <nav class="navbar navbar-color navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <div id="myBtn" class="menu-btn">
+                    <div class="menu-btn__burger"></div>
+                </div>
+            </div>
+            <div class="navbar-header">
+                <div style="color: aliceblue;">
+                    <h3 style="margin-left: 50px;">Hello Jose. Who would you like to add to your list?</h3>
+                </div>
+            </div>
+        </div>
+        <!--hidden div-->
+        </div>
+    </nav>
+    <!-- END OF NAV BAR -->
+
+
+    <!-- Side menu -->
+    <div id="mySidenav" class="sidenav">
+        <a href="/admin/scv/custlistmodel/my_admin_path/">List</a>
+        <a href="/admin/calender">Calender</a>
+        <a href="#">All Customers</a>
+        <a href="#">Income Graph</a>
+    </div>
+
+    <script> //JavaScript
+        document.getElementById("myBtn").addEventListener("click", toggleNav);
+
+        var Isopen = false
+        var menuBtn = document.querySelector('.menu-btn');
+
+        function toggleNav() {
+            if (Isopen == true) {
+                menuBtn.classList.remove('open'); //CSS change
+                return close();
+            }
+            else {
+                menuBtn.classList.add('open'); //CSS change
+                return open();
+            }
+        }
+        function open() {
+            Isopen = true;
+            document.getElementById("mySidenav").style.width = "250px";
+            document.getElementById("main").style.marginLeft = "250px";
+            document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+        }
+        function close() {
+            Isopen = false;
+            document.getElementById("mySidenav").style.width = "0";
+            document.getElementById("main").style.marginLeft = "0";
+            document.body.style.backgroundColor = "white";
+        }
+
+    </script>
+    <!-- Side menu -->
+    <!--///////////////////////////////////////////////////////////////////////////-->
+
+
+    <!-- screenBox -->
+    <div class="screenBox">
+
+        <div style="margin-left: 40px;">
+            <a style="font-size: 20px; color: aliceblue;" href="/admin/scv/custlistmodel/my_admin_path/">
+                <--Back </a>
+        </div>
+
+        <div class="nameBox">
+            <div class="labelBox">
+                <p>Customer Information</p>
+            </div>
+            <div>
+                <h2 style="display: inline-block;">{{cust.fname}} {{cust.lname}}</h2>
+                <h2 style="float: right; margin-right: 30px;">{{cust.city}}</h2>
+            </div>
+            <div>
+                <h2 style="display: inline-block;">{{cust.phone}}</h2>
+                <h2 style="float: right; margin-right: 30px;">Date: {{cust.apptDate}}</h2>
+            </div>
+        </div>
+
+        <div class="actionBox">
+            <div class="labelBox">
+                <p>Customer Options</p>
+            </div>
+            <div class="buttonBox">
+
+                <div style="margin-top: 10px; color: aliceblue;">
+                    <form action="/admin/addCalendar/{{cust.id}}/complete" method="POST">
+                        {% csrf_token %}
+                        <button class="button1">Schedule to Complete</button>
+                    </form>
+                </div>
+
+                <div style="margin-top: 10px; color: aliceblue;">
+                    {% if cust.diagnosedBol == 0 and cust.partsBol == 0 and cust.finishBol == 0 %}
+                    <form action="/admin/addCalendar/{{cust.id}}/diagnostic" method="POST">
+                        {% csrf_token %}
+                        <button class="button1">Schedule diagnostic</button>
+                    </form>
+                    {% else %}
+                    <!-- (Pop up) -->
+                    <button id="parts" class="button2">Wait for Parts</button>
+                    <script>
+                        document.getElementById("parts").addEventListener('click',
+                            function () {
+                                document.querySelector('.bg-model').style.display = "flex"
+                            });
+                    </script>
+                    {% endif %}
+                </div>
+
+                <!--/admin/addNote/{{cust.id}}-->
+                <div style="margin-top: 15px; color: aliceblue;">
+                    <button id="notes" class="button2">Add a Note</button>
+                    <script>
+                        document.getElementById("notes").addEventListener('click',
+                            function () {
+                                document.querySelector('.bg-model2').style.display = "flex"
+                            });
+                    </script>
+                </div>
+                <div style="margin-top: 15px; color: aliceblue;">
+                    <form action="/admin/cancelJob/{{cust.id}}" method="POST">
+                        {% csrf_token %}
+                        <button class="button3" type="submit">Finnish Job</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <div class="descBox">
+            <div class="labelBox">
+                <p>Job Information</p>
+            </div>
+            <h2 style="display: inline-block; margin-left: 20px; color: #3F95E5;">Work Type:</h2>
+            <h2 style="display: inline-block;">{{cust.type}} - {{cust.issus}}</h2>
+            <h3 style="margin-left: 20px;">{{cust.desc}}</h3>
+        </div>
+
+
+
+        <div class="noteBox">
+            <div class="labelBox">
+                <p>Parts and Note</p>
+            </div>
+
+            <div class="cont">
+                <div class="parts">
+                    <h3 style="margin-left: 20px;color: #3F95E5">Part check box</h3>
+                    {% for part in parts %}
+                    <ul>
+                        <li class="li-style">
+                            {% if part.completed == 1 %}
+                            <input type="checkbox" data-target="/admin/complete/false/{{part.id}}/{{cust.id}}" checked>
+                            <label><strike>{{part.partName}}</strike></label>
+                            {% else %}
+                            <input type="checkbox" data-target="/admin/complete/true/{{part.id}}/{{cust.id}}" >
+                            <label> {{part.partName}} </label>
+                            {% endif %}
+                        </li>
+                    </ul>
+                    <script>
+                        $(function () {
+                            $("input[type='checkbox']").change(function () {
+                                var item = $(this);
+                                if (item.is(":checked")) {
+                                    window.location.href = item.data("target")
+                                }
+                                else {
+                                    window.location.href = item.data("target")
+                                }
+                            });
+                        });
+                    </script>
+                    {% endfor %}
+                </div>
+
+                <div class="note">
+                    <h3>{{cust.note}}</h3>
+                </div>
+            </div>
+
+        </div>
+
+
+
+
+    </div>
+    <!-- screenBox -->
+
+    <!-- Model(parts-pop up) -->
+    <div class="bg-model">
+        <div class="model-content">
+            <div id="close" class="close" style="font-size: 40px;">+</div>
+            <div class="labelBox" style="margin-top: 20px;">
+                <p>Add Parts We Need to Wait for.</p>
+            </div>
+            <form action="/admin/addpart/{{cust.id}}" method="POST">
+                {% csrf_token %}
+                <input name="partName" type="text" placeholder="Part Name">
+                <button type="submit" class="button">Finnish</button>
+            </form>
+        </div>
+    </div>
+
+
+    <!-- (Pop up) -->
+    <script>
+        document.getElementById("close").addEventListener('click',
+            function () {
+                document.querySelector('.bg-model').style.display = "none"
+            });
+    </script>
+
+
+
+    <!-- Model(note-pop up) -->
+    <div class="bg-model2">
+        <div class="model-content">
+            <div id="close2" class="close" style="font-size: 40px;">+</div>
+            <div class="labelBox" style="margin-top: 20px;">
+                <p>Notes.</p>
+            </div>
+            <form action="/admin/note/{{cust.id}}" method="POST">
+                {% csrf_token %}
+                    <textarea style="margin-left: 10px;" name="note" id="note" cols="60" rows="8">{{cust.note}}</textarea>
+                <button type="submit" class="button">Add Note</button>
+            </form>
+        </div>
+    </div>
+
+
+    <!-- (Pop up) -->
+    <script>
+        document.getElementById("close2").addEventListener('click',
+            function () {
+                document.querySelector('.bg-model2').style.display = "none"
+            });
+    </script>
+
+
+
+
+
+</body>
+
+</html>

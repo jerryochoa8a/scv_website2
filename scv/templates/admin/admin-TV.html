@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <style>
+        * {
+            background-color: rgb(65, 71, 77);
+            color: aliceblue;
+        }
+
+        #customers {
+            font-family: Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        #customers td,
+        #customers th {
+            border: 1px solid #ddd;
+            padding: 8px;
+            font-size: 30px;
+        }
+
+        #customers {
+            background-color: #eeeeee;
+        }
+
+        #customers tr:hover {
+            background-color: #ddd;
+        }
+
+        #customers th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #2B73B3;
+            color: white;
+        }
+
+        .navbar {
+            background-color:  rgb(56, 61, 66);
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            margin-top: 20px;
+            width: 100%;
+            height: 50px;
+        }
+
+
+        .listBox {
+            /* background-color: aqua; */
+            margin: auto;
+            margin-top: 50px;
+            height: 400px;
+            width: 90%;
+
+        }
+    </style>
+
+<link href='http://fonts.googleapis.com/css?family=Oleo+Script' rel='stylesheet' type='text/css'>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content="30"> <!--This updates the page every 30 secs-->
+    <title>TV</title>
+</head>
+<body>
+    <div class="mainBox">    
+        <div class="navbar">
+                <h2 style="background-color: rgb(56, 61, 66); width: 340px; margin-left: 20px;">{{today}}</h2>
+                <h2 style="background-color: rgb(56, 61, 66); font-size: 25px; margin-bottom: 20px; width: 150px;">{{time}}</h2>
+        </div>
+        <div class="listBox">
+            <table id="customers">
+                <tr style="font: 400 25px/1.3 'Oleo Script', Helvetica, sans-serif;">
+                    <th>Name</th>
+                    <th>Phone #</th>
+                    <th>Type</th>
+                    <th></th>
+                    <th>City</th>
+                </tr>
+
+                {% for appt in appts %}
+                <tr>
+                    <td>{{appt.fname}} {{appt.lname}}</td>
+                    <td>{{appt.phone}}</td>
+                    <td>{{appt.type}}</td>
+                    <td>{{appt.issus}}</td>
+                    <td>{{appt.city}}</td>
+                </tr>
+                {% endfor %}
+
+
+            </table>
+        </div>
+    </div>
+    
+</body>
+</html>

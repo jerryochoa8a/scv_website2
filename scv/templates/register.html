@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+
+    <style>
+        /* CSS */
+        * {
+            font-family: Cambria;
+        }
+
+        /* navbar */
+        .navbar-color {
+            /* background-color: rgb(63, 149, 229); */
+            background-color: rgb(43, 115, 179);
+            /* border-color: #E7E7E7; */
+            /* border:3px solid rgb(65, 63, 63); */
+            padding-bottom: 10px;
+        }
+
+        .navbar-custom {
+            color: #FFFFFF;
+        }
+
+
+        .sidenav {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            /* background-color: #111; */
+            /* background-color: rgb(63, 149, 229); */
+            background-color: rgb(137, 137, 148);
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+        }
+
+        .sidenav a {
+            padding: 8px 8px 8px 32px;
+            text-decoration: none;
+            font-size: 25px;
+            color: aliceblue;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .sidenav a:hover {
+            color: #f1f1f1;
+        }
+
+        .sidenav .closebtn {
+            position: absolute;
+            top: 0;
+            right: 25px;
+            font-size: 36px;
+            margin-left: 50px;
+        }
+
+
+        .bottomBar {
+            background-color: rgb(36, 36, 36);
+            bottom: 0;
+            width: auto;
+            height: 320px;
+        }
+
+        .bottomBarBox {
+            /* background-color: red; */
+            color: aliceblue;
+            text-align: center;
+            margin: auto;
+            width: auto;
+            height: auto;
+        }
+
+        .bottomBarBox h3 {
+            color: rgb(63, 149, 229);
+        }
+
+        .mediaBox {
+            /* background-color: red; */
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+        }
+
+        .mediaBox span {
+            font-size: 30px;
+        }
+
+        .yelp {
+            color: red;
+        }
+
+
+
+        /* Side menu button */
+        .menu-btn {
+            margin-top: 5px;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            transition: all .5s ease-in-out;
+            /* border: 3px solid #fff; */
+        }
+
+        .menu-btn__burger {
+            width: 30px;
+            height: 5px;
+            background: #fff;
+            border-radius: 5px;
+            /* box-shadow: 0 2px 5px rgba(255, 101, 47, .2); */
+            transition: all .5s ease-in-out;
+        }
+
+        .menu-btn__burger::before,
+        .menu-btn__burger::after {
+            content: '';
+            position: absolute;
+            width: 30px;
+            height: 5px;
+            background: #fff;
+            border-radius: 5px;
+            /* box-shadow: 0 2px 5px rgba(255, 101, 47, .2); */
+            transition: all .5s ease-in-out;
+        }
+
+        .menu-btn__burger::before {
+            transform: translateY(-16px);
+        }
+
+        .menu-btn__burger::after {
+            transform: translateY(16px);
+        }
+
+        /* ANIMATION */
+        .menu-btn.open .menu-btn__burger {
+            transform: translateX(-50px);
+            background: transparent;
+            box-shadow: none;
+        }
+
+        .menu-btn.open .menu-btn__burger::before {
+            transform: rotate(45deg) translate(35px, -35px);
+        }
+
+        .menu-btn.open .menu-btn__burger::after {
+            transform: rotate(-45deg) translate(35px, 35px);
+        }
+
+        /* side menu button  */
+
+
+
+
+        .loginCon {
+            background-color: #6A86AA;
+            align-items: center;
+            font-family: Cambria;
+            display: flex;
+            flex-direction: column;
+            margin-top: 80px;
+            display: flex;
+            width: auto;
+            height: auto;
+            padding-bottom: 20px;
+        }
+
+        .loginBox {
+            background-color: rgb(43, 115, 179);
+            border: 3px solid rgb(65, 63, 63);
+            border-radius: 20px;
+
+            display: flex;
+            justify-content: center;
+
+            margin: auto;
+            /* margin-top: 100px; */
+            width: auto;
+            height: auto;
+            padding-bottom: 20px;
+        }
+
+        .loginForm {
+            /* background-color: red; */
+
+            display: flex;
+            justify-content: center;
+
+            margin-left: 10%;
+            margin-right: 10%;
+            /* display: flex; */
+            align-items: center;
+            text-align: center;
+            width: auto;
+            height: auto;
+        }
+
+        .loginForm h2 {
+            color: aliceblue;
+        }
+
+        .loginForm a {
+            color: aliceblue;
+        }
+
+        .loginBtn {
+            /* background-color: rgb(142, 152, 163); */
+            background-color: #a0a5af;
+            color: aliceblue;
+            border-radius: 20px;
+            border: 2px solid rgb(49, 49, 49);
+            align-self: center;
+            margin: auto;
+            margin-top: 20px;
+            margin-bottom: 3px;
+            width: 100px;
+            height: 30px;
+        }
+
+        .loginBtn:hover {
+            /* background-color: rgb(142, 152, 163); */
+            background-color: #cbd1db;
+            color: aliceblue;
+            border-radius: 20px;
+            border: 2px solid rgb(49, 49, 49);
+            margin: auto;
+            margin-top: 20px;
+            margin-bottom: 3px;
+            width: 100px;
+            height: 30px;
+        }
+
+        .messages {
+            /* background-color: green; */
+            /* margin-top: 80px; */
+            width: 400px;
+            height: auto;
+        }
+
+
+        @media only screen and (max-width: 600px) {
+
+            .menu-btn {
+                float: left;
+                margin-top: 5px;
+                position: relative;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                position: absolute;
+                width: 40px;
+                height: 40px;
+                cursor: pointer;
+                transition: all .5s ease-in-out;
+                /* border: 3px solid #fff; */
+            }
+
+
+
+        }
+    </style>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+    <title>SC RV</title>
+</head>
+
+<body style="background-color: #6A86AA;">
+    <!-- NAV BAR -->
+    <nav class="navbar navbar-color navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+
+                <!--Side Menu-->
+                <div id="myBtn" class="menu-btn">
+                    <div class="menu-btn__burger"></div>
+                </div>
+                <!--Side Menu-->
+
+            </div>
+
+            <div class="hiddenDiv">
+                <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+
+                    <!-- Right -->
+                    <ul id="my-content" class="nav navbar-nav navbar-right navbar-custom">
+
+                        {% if request.session.userid == None %}
+                        <li>
+                            <a class="navbar-custom" href="/login"><span
+                                    class="glyphicon glyphicon-user navbar-custom"></span>Sign In</a>
+                        </li>
+                        {% else  %}
+                        <li class="dropdown">
+                            <a class="dropdown-toggle navbar-custom" data-toggle="dropdown" href="#">Hello {{user.fname}}
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="/account/{{user.id}}">ACCOUNT</a></li>
+                                <li><a href="/logout">LOGOUT</a></li>
+                            </ul>
+                        </li>
+                        {% endif %}
+
+                        <li>
+                            <a class="navbar-custom" href="/contactUs"><span class="glyphicon"></span>Contact Us</a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+            <!--hidden div-->
+        </div>
+    </nav>
+    <!-- END OF NAV BAR -->
+
+
+    <!-- Side menu -->
+    {% if request.session.userid == None %}
+    <div id="mySidenav" class="sidenav">
+        <a href="/">Home</a>
+        <a href="/login">Sign In</a>
+        <a href="/appt">Appointment</a>
+        <a href="/about">About</a>
+        <a href="/contactUs">Contact Us</a>
+    </div>
+    {% else  %}
+    <div id="mySidenav" class="sidenav">
+        <a href="/">Home</a>
+        <a href="/account/{{user.id}}">Account</a>
+        <a href="/appt">Appointment</a>
+        <a href="/about">About</a>
+        <a href="/contactUs">Contact Us</a>
+    </div>
+    {% endif %}
+
+    <script> //JavaScript
+        document.getElementById("myBtn").addEventListener("click", toggleNav);
+
+        var Isopen = false
+        var menuBtn = document.querySelector('.menu-btn');
+
+        function toggleNav() {
+            if (Isopen == true) {
+                menuBtn.classList.remove('open'); //CSS change
+                return close();
+            }
+            else {
+                menuBtn.classList.add('open'); //CSS change
+                return open();
+            }
+        }
+        function open() {
+            Isopen = true;
+            document.getElementById("mySidenav").style.width = "250px";
+            document.getElementById("main").style.marginLeft = "250px";
+            document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+        }
+        function close() {
+            Isopen = false;
+            document.getElementById("mySidenav").style.width = "0";
+            document.getElementById("main").style.marginLeft = "0";
+            document.body.style.backgroundColor = "white";
+        }
+
+    </script>
+    <!-- Side menu -->
+    <!--///////////////////////////////////////////////////////////////////////////-->
+
+
+
+
+    <!-- Login -->
+    <div class="loginCon">
+
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li style="color: rgb(156, 0, 0);" {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+
+
+        <div class="loginBox">
+            <div class="loginForm">
+                <form action="/reg" method="POST" style="color: aliceblue;">
+                    {% csrf_token %}
+                    <div>
+
+                        <h2>Create an Account</h2>
+                        <div class="row row-sm-offset">
+                            <div class="col-md-6 multi-horizontal" data-for="name">
+                                <div>
+                                    <label for="fname">First Name</label>
+                                    <input type="text" class="form-control" name="fname" id="fname" required="">
+                                </div>
+                            </div>
+                            <div class="col-md-6 multi-horizontal" data-for="email">
+                                <div>
+                                    <label for="lname">Last Name</label>
+                                    <input type="text" class="form-control" name="lname" id="lname" required="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row row-sm-offset">
+                            <div class="col-md-6 multi-horizontal" data-for="phone">
+                                <div class="form-group">
+                                    <label>Name of your City</label>
+                                    <input type="text" placeholder="Ex: Saugus, Newhall, Canyon Country"
+                                        class="form-control" name="city" id="city" required="">
+                                </div>
+                            </div>
+                            <div class="col-md-5 multi-horizontal" data-for="phone">
+                                <div class="form-group">
+                                    <label>Phone #</label>
+                                    <input type="tel" class="form-control" name="phone" data-form-field="Phone"
+                                        maxlength="10" id="phone-form1-4">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row row-sm-offset">
+                            <div class="col-md-12 multi-horizontal">
+                                <div class="form-group">
+                                    <label>Email</label>
+                                    <input type="text" class="form-control" name="email" id="email" required="">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row row-sm-offset">
+                            <div class="col-md-12 multi-horizontal">
+                                <div class="form-group">
+                                    <label>Password</label>
+                                    <input type="password" class="form-control" name="pass" id="pass" required="">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row row-sm-offset">
+                            <div class="col-md-12 multi-horizontal">
+                                <div class="form-group">
+                                    <label>Confirm Password</label>
+                                    <input type="password" class="form-control" name="conPass" id="conPass" required="">
+                                </div>
+                            </div>
+                        </div>
+                        <div style="display: flex;">
+                            <button type="submit" class="loginBtn">SUBMIT</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- Login -->
+
+
+
+
+    <!-- bottom -->
+    <div class="bottomBar">
+        <div class="bottomBarBox">
+            <h3>CONTACT US</h3>
+            <h4>Business Number: (661)-618-1886</h4>
+            <h4>Fax Number: 661-362-8090</h4>
+            <h4>Email: scrv8@yahoo.com</h4>
+
+            <h3>SOCIAL MEDIA</h3>
+            <div class="mediaBox">
+                <a href="https://www.facebook.com/SantaClaritaRV" class="btn btn-social-icon btn-facebook">
+                    <span class="fa fa-facebook"></span>
+                </a>
+            </div>
+            <div class="mediaBox">
+                <a href="https://www.yelp.com/biz/santa-claritas-rv-mobile-service-santa-clarita?osq=RV+Mobile+Repair"
+                    class="btn btn-social-icon btn-yelp yelp">
+                    <span class="fa fa-yelp"></span>
+                </a>
+            </div>
+            <p>© 2020 Santa Clarita RV Mobile Service. All rights reserved.</p>
+        </div>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+
+    <style>
+        /* CSS */
+        * {
+            font-family: Cambria;
+        }
+
+        /* navbar */
+        .navbar-color {
+            /* background-color: rgb(63, 149, 229); */
+            background-color: rgb(43, 115, 179);
+            border-color: #E7E7E7;
+            padding-bottom: 10px;
+        }
+
+        .navbar-custom {
+            color: #FFFFFF;
+        }
+
+
+        .sidenav {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            /* background-color: #111; */
+            /* background-color: rgb(63, 149, 229); */
+            background-color: rgb(137, 137, 148);
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+        }
+
+        .sidenav a {
+            padding: 8px 8px 8px 32px;
+            text-decoration: none;
+            font-size: 25px;
+            color: aliceblue;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .sidenav a:hover {
+            color: #f1f1f1;
+        }
+
+        .sidenav .closebtn {
+            position: absolute;
+            top: 0;
+            right: 25px;
+            font-size: 36px;
+            margin-left: 50px;
+        }
+
+
+        .bottomBar {
+            background-color: rgb(36, 36, 36);
+            width: auto;
+            height: 320px;
+            display: flex;
+            align-self: flex-end;
+        }
+
+        .bottomBarBox {
+            /* background-color: red; */
+            color: aliceblue;
+            text-align: center;
+            margin: auto;
+            width: auto;
+            height: auto;
+        }
+
+        .bottomBarBox h3 {
+            color: rgb(63, 149, 229);
+        }
+
+        .mediaBox {
+            /* background-color: red; */
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+        }
+
+        .mediaBox span {
+            font-size: 30px;
+        }
+
+        .yelp {
+            color: red;
+        }
+
+
+
+
+
+        .screenBox {
+            /* background-color: #e6e6e6; */
+            background-color: #6A86AA;
+            height: auto;
+            width: auto;
+            padding-bottom: 30px;
+            padding-top: 120px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+        }
+
+        .user_Info_box {
+            background-color: aliceblue;
+            border: rgb(158, 158, 158) 2px solid;
+            width: 320px;
+            height: 270px;
+            /* border-radius: 25px; */
+        }
+
+        .appt_scroll {
+            background-color: aliceblue;
+            border: rgb(158, 158, 158) 2px solid;
+            width: 450px;
+            height: auto;
+            /* border-radius: 25px; */
+        }
+
+        .labelBox {
+            background-color: rgb(43, 115, 179);
+            text-align: center;
+            color: aliceblue;
+            height: 30px;
+            /* border-radius: 5px; */
+            width: 100%;
+        }
+
+
+
+
+
+        /* Side menu button */
+        .menu-btn {
+            margin-top: 5px;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            transition: all .5s ease-in-out;
+            /* border: 3px solid #fff; */
+        }
+
+        .menu-btn__burger {
+            width: 30px;
+            height: 5px;
+            background: #fff;
+            border-radius: 5px;
+            /* box-shadow: 0 2px 5px rgba(255, 101, 47, .2); */
+            transition: all .5s ease-in-out;
+        }
+
+        .menu-btn__burger::before,
+        .menu-btn__burger::after {
+            content: '';
+            position: absolute;
+            width: 30px;
+            height: 5px;
+            background: #fff;
+            border-radius: 5px;
+            /* box-shadow: 0 2px 5px rgba(255, 101, 47, .2); */
+            transition: all .5s ease-in-out;
+        }
+
+        .menu-btn__burger::before {
+            transform: translateY(-16px);
+        }
+
+        .menu-btn__burger::after {
+            transform: translateY(16px);
+        }
+
+        /* ANIMATION */
+        .menu-btn.open .menu-btn__burger {
+            transform: translateX(-50px);
+            background: transparent;
+            box-shadow: none;
+        }
+
+        .menu-btn.open .menu-btn__burger::before {
+            transform: rotate(45deg) translate(35px, -35px);
+        }
+
+        .menu-btn.open .menu-btn__burger::after {
+            transform: rotate(-45deg) translate(35px, 35px);
+        }
+
+        /* side menu button  */
+
+        #customers {
+            font-family: Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        #customers td,
+        #customers th {
+            border: 1px solid #ddd;
+            background-color: aliceblue;
+            padding: 8px;
+            font-size: 19px;
+        }
+
+        #customers {
+            background-color: #eeeeee;
+        }
+
+        #customers tr:hover {
+            background-color: #ddd;
+        }
+
+        #customers th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #2B73B3;
+            color: white;
+        }
+
+        .push {
+            margin-left: 20px;
+        }
+
+
+
+
+        @media only screen and (max-width: 600px) {
+
+            .menu-btn {
+                float: left;
+                margin-top: 5px;
+                position: relative;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                position: absolute;
+                width: 40px;
+                height: 40px;
+                cursor: pointer;
+                transition: all .5s ease-in-out;
+                /* border: 3px solid #fff; */
+            }
+
+            .screenBox {
+                /* background-color: #e6e6e6; */
+                background-color: #6A86AA;
+                height: auto;
+                width: auto;
+                padding-bottom: 30px;
+                padding-top: 120px;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-evenly;
+            }
+
+            .appt_scroll {
+                background-color: aliceblue;
+                border: rgb(158, 158, 158) 2px solid;
+                width: auto;
+                height: auto;
+                margin-left: 20px;
+                margin-right: 20px;
+                margin-top: 20px;
+                /* border-radius: 25px; */
+            }
+
+            .user_Info_box {
+                background-color: aliceblue;
+                border: rgb(158, 158, 158) 2px solid;
+                height: 270px;
+                width: auto;
+                margin-left: 20px;
+                margin-right: 20px;
+                /* border-radius: 25px; */
+            }
+
+        }
+    </style>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+    <title>SC RV</title>
+</head>
+
+<body>
+    <!-- NAV BAR -->
+    <nav class="navbar navbar-color navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+
+                <!--Side Menu-->
+                <div id="myBtn" class="menu-btn">
+                    <div class="menu-btn__burger"></div>
+                </div>
+                <!--Side Menu-->
+
+            </div>
+
+            <div class="hiddenDiv">
+                <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+
+                    <!-- Right -->
+                    <ul id="my-content" class="nav navbar-nav navbar-right navbar-custom">
+                        {% if request.session.userid == None %}
+                        <li>
+                            <a class="navbar-custom" href="/login"><span
+                                    class="glyphicon glyphicon-user navbar-custom"></span>Sign In</a>
+                        </li>
+                        {% else %}
+                        <li class="dropdown">
+                            <a class="dropdown-toggle navbar-custom" data-toggle="dropdown" href="#">Hello
+                                {{user.fname}}
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="/account/{{user.id}}">ACCOUNT</a></li>
+                                <li><a href="/logout">LOGOUT</a></li>
+                            </ul>
+                        </li>
+                        {% endif %}
+
+                        <li>
+                            <a class="navbar-custom" href="/contactUs"><span class="glyphicon"></span>Contact Us</a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+            <!--hidden div-->
+        </div>
+    </nav>
+    <!-- END OF NAV BAR -->
+
+
+    <!-- Side menu -->
+    {% if request.session.userid == None %}
+    <div id="mySidenav" class="sidenav">
+        <a href="/">Home</a>
+        <a href="/login">Sign In</a>
+        <a href="/appt">Appointment</a>
+        <a href="/about">About</a>
+        <a href="/contactUs">Contact Us</a>
+    </div>
+    {% else %}
+    <div id="mySidenav" class="sidenav">
+        <a href="/">Home</a>
+        <a href="/account/{{user.id}}">Account</a>
+        <a href="/appt">Appointment</a>
+        <a href="/about">About</a>
+        <a href="/contactUs">Contact Us</a>
+    </div>
+    {% endif %}
+
+    <script> //JavaScript
+        document.getElementById("myBtn").addEventListener("click", toggleNav);
+
+        var Isopen = false
+        var menuBtn = document.querySelector('.menu-btn');
+
+        function toggleNav() {
+            if (Isopen == true) {
+                menuBtn.classList.remove('open'); //CSS change
+                return close();
+            }
+            else {
+                menuBtn.classList.add('open'); //CSS change
+                return open();
+            }
+        }
+        function open() {
+            Isopen = true;
+            document.getElementById("mySidenav").style.width = "250px";
+            document.getElementById("main").style.marginLeft = "250px";
+            document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+        }
+        function close() {
+            Isopen = false;
+            document.getElementById("mySidenav").style.width = "0";
+            document.getElementById("main").style.marginLeft = "0";
+            document.body.style.backgroundColor = "white";
+        }
+
+    </script>
+    <!-- Side menu -->
+    <!--///////////////////////////////////////////////////////////////////////////-->
+
+
+    <!-- screenBox -->
+    <div class="screenBox">
+        <div class="user_Info_box">
+            <div class="labelBox">
+                <p>User Information</p>
+            </div>
+            <div>
+                <h4 style="color: #1778d3; display: inline-block; margin-left: 10px;">Name:</h4>
+                <h3 style="display: inline-block;">{{user.fname}} {{user.lname}}</h3>
+            </div>
+            <div class="Push">
+                <h4 style="color: #1778d3; display: inline-block; margin-left: 10px;">City:</h4>
+                <h3 style="display: inline-block;">{{user.city}}</h3>
+            </div>
+            <div class="Push">
+                <h4 style="color: #1778d3; display: inline-block; margin-left: 10px;">Email:</h4>
+                <h3 style="display: inline-block;"> {{user.email}}</h3>
+            </div>
+            <div class="Push">
+                <h4 style="color: #1778d3; display: inline-block; margin-left: 10px;">Phone #:</h4>
+                <h3 style="display: inline-block;"> {{phone}}</h3>
+            </div>
+        </div>
+        <div class="appt_scroll">
+            <div class="labelBox">
+                <p>Current Appointment</p>
+            </div>
+
+            <table id="customers">
+                <tr>
+                    <td>{{appt.type}}</td>
+                    <td>{{appt.issus}}</td>
+                    <td>{{appt.city}}</td>
+                </tr>
+            </table>
+            {% if appt.diagnosedBol == 1 %}
+            <div style="background-color: aliceblue;">
+                <h3 style="color: #1778d3; display: inline-block;margin-left: 10px;">Status:</h3>
+                <h4 style="display: inline-block; margin-left: 20px;">Scheduled to be Diagnosed</h4>
+            </div>
+            <div style="background-color: aliceblue;">
+                <h3 style="color: #1778d3; display: inline-block;margin-left: 10px;">Scheduled Date:</h3>
+                <h4 style="display: inline-block; margin-left: 20px;">{{date1}} - {{date2}}</h4>
+            </div>
+            {% elif appt.partsBol == 1 %}
+            <div style="background-color: aliceblue;">
+                <h3 style="color: #1778d3; display: inline-block;margin-left: 10px;">Status:</h3>
+                <h4 style="display: inline-block; margin-left: 20px;">Waiting for Parts</h4>
+            </div>
+            {% elif appt.finishBol == 1 %}
+            <div style="background-color: aliceblue;">
+                <h3 style="color: #1778d3; display: inline-block;margin-left: 10px;">Status:</h3>
+                <h4 style="display: inline-block; margin-left: 20px;">Scheduled To Finnish</h4>
+            </div>
+            <div style="background-color: aliceblue;">
+                <h3 style="color: #1778d3; display: inline-block;margin-left: 10px;">Scheduled Date:</h3>
+                <h4 style="display: inline-block; margin-left: 20px;">{{date1}} - {{date2}}</h4>
+            </div>
+            {% else %}
+            <div style="background-color: aliceblue;">
+                <h3 style="color: #1778d3; display: inline-block;margin-left: 10px;">Status:</h3>
+                <h4 style="display: inline-block; margin-left: 20px;">Processing</h4>
+            </div>
+            {% endif %}
+
+        </div>
+    </div>
+    <!-- screenBox -->
+
+
+    <!-- bottom -->
+    <div class="bottomBar">
+        <div class="bottomBarBox">
+            <h3>CONTACT US</h3>
+            <h4>Business Number: (661)-618-1886</h4>
+            <h4>Fax Number: 661-362-8090</h4>
+            <h4>Email: scrv8@yahoo.com</h4>
+
+            <h3>SOCIAL MEDIA</h3>
+            <div class="mediaBox">
+                <a href="https://www.facebook.com/SantaClaritaRV" class="btn btn-social-icon btn-facebook">
+                    <span class="fa fa-facebook"></span>
+                </a>
+            </div>
+            <div class="mediaBox">
+                <a href="https://www.yelp.com/biz/santa-claritas-rv-mobile-service-santa-clarita?osq=RV+Mobile+Repair"
+                    class="btn btn-social-icon btn-yelp yelp">
+                    <span class="fa fa-yelp"></span>
+                </a>
+            </div>
+            <p>© 2020 Santa Clarita RV Mobile Service. All rights reserved.</p>
+        </div>
+    </div>
+
+</body>
+
+</html>

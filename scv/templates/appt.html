@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+
+    <style>
+        /* CSS */
+        * {
+            font-family: Cambria;
+        }
+
+        /* navbar */
+        .navbar-color {
+            /* background-color: rgb(63, 149, 229); */
+            background-color: rgb(43, 115, 179);
+            border-color: #E7E7E7;
+            padding-bottom: 10px;
+        }
+
+        .navbar-custom {
+            color: #FFFFFF;
+        }
+
+
+        .sidenav {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            /* background-color: #111; */
+            /* background-color: rgb(63, 149, 229); */
+            background-color: rgb(137, 137, 148);
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+        }
+
+        .sidenav a {
+            padding: 8px 8px 8px 32px;
+            text-decoration: none;
+            font-size: 25px;
+            color: aliceblue;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .sidenav a:hover {
+            color: #f1f1f1;
+        }
+
+        .sidenav .closebtn {
+            position: absolute;
+            top: 0;
+            right: 25px;
+            font-size: 36px;
+            margin-left: 50px;
+        }
+
+
+        .bottomBar {
+            background-color: rgb(36, 36, 36);
+            width: auto;
+            height: 320px;
+            display: flex;
+            align-self: flex-end;
+        }
+
+        .bottomBarBox {
+            /* background-color: red; */
+            color: aliceblue;
+            text-align: center;
+            margin: auto;
+            width: auto;
+            height: auto;
+        }
+
+        .bottomBarBox h3 {
+            color: rgb(63, 149, 229);
+        }
+
+        .mediaBox {
+            /* background-color: red; */
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+        }
+
+        .mediaBox span {
+            font-size: 30px;
+        }
+
+        .yelp {
+            color: red;
+        }
+
+
+
+
+
+        .screenBox {
+            /* background-color: lightblue; */
+            background-color: #6A86AA;
+            width: auto;
+            padding-bottom: 20px;
+            padding-top: 80px;
+            height: auto;
+        }
+
+
+
+        .contacts {
+            width: auto;
+            height: auto;
+            padding-bottom: 130px;
+
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+
+            background-color: rgb(43, 115, 179);
+            border: 3px solid rgb(65, 63, 63);
+            border-radius: 20px;
+            align-items: center;
+            display: flex;
+            margin: auto;
+            margin-left: 10%;
+            margin-right: 10%;
+        }
+
+        .emailForm {
+            /* background-color: deeppink; */
+            margin-top: 20px;
+            width: auto;
+            height: auto;
+        }
+        .emailForm h2{
+            /* background-color: deeppink; */
+            margin-bottom: 25px;
+        }
+
+        .loginBtn {
+            /* background-color: rgb(142, 152, 163); */
+            background-color: #a0a5af;
+            color: aliceblue;
+            border-radius: 20px;
+            border: 2px solid rgb(49, 49, 49);
+            align-self: center;
+            margin: auto;
+            margin-top: 20px;
+            margin-bottom: 3px;
+            width: 100px;
+            height: 30px;
+        }
+
+        .loginBtn:hover {
+            /* background-color: rgb(142, 152, 163); */
+            background-color: #cbd1db;
+            color: aliceblue;
+            border-radius: 20px;
+            border: 2px solid rgb(49, 49, 49);
+            margin: auto;
+            margin-top: 20px;
+            margin-bottom: 3px;
+            width: 100px;
+            height: 30px;
+        }
+
+
+
+
+
+        /* Side menu button */
+        .menu-btn {
+            margin-top: 5px;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            transition: all .5s ease-in-out;
+            /* border: 3px solid #fff; */
+        }
+
+        .menu-btn__burger {
+            width: 30px;
+            height: 5px;
+            background: #fff;
+            border-radius: 5px;
+            /* box-shadow: 0 2px 5px rgba(255, 101, 47, .2); */
+            transition: all .5s ease-in-out;
+        }
+
+        .menu-btn__burger::before,
+        .menu-btn__burger::after {
+            content: '';
+            position: absolute;
+            width: 30px;
+            height: 5px;
+            background: #fff;
+            border-radius: 5px;
+            /* box-shadow: 0 2px 5px rgba(255, 101, 47, .2); */
+            transition: all .5s ease-in-out;
+        }
+
+        .menu-btn__burger::before {
+            transform: translateY(-16px);
+        }
+
+        .menu-btn__burger::after {
+            transform: translateY(16px);
+        }
+
+        /* ANIMATION */
+        .menu-btn.open .menu-btn__burger {
+            transform: translateX(-50px);
+            background: transparent;
+            box-shadow: none;
+        }
+
+        .menu-btn.open .menu-btn__burger::before {
+            transform: rotate(45deg) translate(35px, -35px);
+        }
+
+        .menu-btn.open .menu-btn__burger::after {
+            transform: rotate(-45deg) translate(35px, 35px);
+        }
+
+        /* side menu button  */
+
+
+        .warning{
+            background-color: #242424; 
+            border-radius: 10px; 
+            margin-top: 20px;
+        }
+
+        .warning p {
+            margin-left: 20px;
+        }
+
+        .note {
+            margin-left: 40px;
+            color: aliceblue;
+            float: right;
+        }
+
+        .title {
+            color: aliceblue;
+            float: left;
+        }
+
+
+
+
+
+        @media only screen and (max-width: 600px) {
+
+            .menu-btn {
+                float: left;
+                margin-top: 5px;
+                position: relative;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                position: absolute;
+                width: 40px;
+                height: 40px;
+                cursor: pointer;
+                transition: all .5s ease-in-out;
+                /* border: 3px solid #fff; */
+            }
+
+
+
+        }
+    </style>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+    <title>SC RV</title>
+</head>
+
+<body>
+    <script>
+        window.alert("Please Note!\nService Calls are a minimum of $65 per Work Order\n and $150 an Hour.");
+    </script>
+    <!-- NAV BAR -->
+    <nav class="navbar navbar-color navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+
+                <!--Side Menu-->
+                <div id="myBtn" class="menu-btn">
+                    <div class="menu-btn__burger"></div>
+                </div>
+                <!--Side Menu-->
+
+            </div>
+
+            <div class="hiddenDiv">
+                <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+
+                    <!-- Right -->
+                    <ul id="my-content" class="nav navbar-nav navbar-right navbar-custom">
+                        {% if request.session.userid == None %}
+                        <li>
+                            <a class="navbar-custom" href="/login"><span
+                                    class="glyphicon glyphicon-user navbar-custom"></span>Sign In</a>
+                        </li>
+                        {% else  %}
+                        <li class="dropdown">
+                            <a class="dropdown-toggle navbar-custom" data-toggle="dropdown" href="#">Hello {{user.fname}}
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="/account/{{user.id}}">ACCOUNT</a></li>
+                                <li><a href="/logout">LOGOUT</a></li>
+                            </ul>
+                        </li>
+                        {% endif %}
+
+                        <li>
+                            <a class="navbar-custom" href="/contactUs"><span class="glyphicon"></span>Contact Us</a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+            <!--hidden div-->
+        </div>
+    </nav>
+    <!-- END OF NAV BAR -->
+
+
+    <!-- Side menu -->
+    {% if request.session.userid == None %}
+    <div id="mySidenav" class="sidenav">
+        <a href="/">Home</a>
+        <a href="/login">Sign In</a>
+        <a href="/appt">Appointment</a>
+        <a href="/about">About</a>
+        <a href="/contactUs">Contact Us</a>
+    </div>
+    {% else  %}
+    <div id="mySidenav" class="sidenav">
+        <a href="/">Home</a>
+        <a href="/account/{{user.id}}">Account</a>
+        <a href="/appt">Appointment</a>
+        <a href="/about">About</a>
+        <a href="/contactUs">Contact Us</a>
+    </div>
+    {% endif %}
+
+    <script> //JavaScript
+        document.getElementById("myBtn").addEventListener("click", toggleNav);
+
+        var Isopen = false
+        var menuBtn = document.querySelector('.menu-btn');
+
+        function toggleNav() {
+            if (Isopen == true) {
+                menuBtn.classList.remove('open'); //CSS change
+                return close();
+            }
+            else {
+                menuBtn.classList.add('open'); //CSS change
+                return open();
+            }
+        }
+        function open() {
+            Isopen = true;
+            document.getElementById("mySidenav").style.width = "250px";
+            document.getElementById("main").style.marginLeft = "250px";
+            document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+        }
+        function close() {
+            Isopen = false;
+            document.getElementById("mySidenav").style.width = "0";
+            document.getElementById("main").style.marginLeft = "0";
+            document.body.style.backgroundColor = "white";
+        }
+
+    </script>
+    <!-- Side menu -->
+    <!--///////////////////////////////////////////////////////////////////////////-->
+
+
+    <!-- screenBox -->
+    <div class="screenBox">
+
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li style="color: rgb(122, 0, 0);" {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+
+
+        <div class="contacts">
+            <div>
+                <div class="title">
+                    <h2>Get added to the List.</h2>
+                </div>
+                <div class="note">
+                    <p><b>Please Note!</b></p>
+                    <p>Service Calls are a minimum of $65 per Work Order and $150 an Hour.</p>
+                </div>
+            </div>
+            <div class="emailForm">
+                <div>
+                    <form action="/makeAppt" method="POST" style="color: aliceblue;">
+                        {% csrf_token %}
+                        <div class="row row-sm-offset">
+                            <div class="col-md-3 multi-horizontal" data-for="name">
+                                <div>
+                                    <label>First Name</label>
+                                    <input type="text" value="{{user.fname}}" class="form-control" name="fname" id="fname" required="">
+                                </div>
+                            </div>
+                            <div class="col-md-3 multi-horizontal" data-for="email">
+                                <div>
+                                    <label>Last Name</label>
+                                    <input type="text" value="{{user.lname}}" class="form-control" name="lname" id="lname"
+                                    required="" >
+                                </div>
+                            </div>
+                            <div class="col-md-4 multi-horizontal" data-for="phone">
+                                <div class="form-group">
+                                    <label>Phone #</label>
+                                    <input type="tel" value="{{user.phone}}" class="form-control" name="phone" data-form-field="Phone"
+                                    id="phone-form1-4" required="" maxlength="10">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row row-sm-offset">
+                            <div class="col-md-5 multi-horizontal" data-for="phone">
+                                <div class="form-group">
+                                    <label>Name of your City</label>
+                                    <input type="text" value="{{user.city}}" placeholder="Ex: Saugus, Newhall, Canyon Country" class="form-control" name="city" id="city"
+                                    required="" >
+                                </div>
+                            </div>
+                            <div class="col-md-3 multi-horizontal" data-for="phone">
+                                <div class="form-group">
+                                    <label>Type of Work</label>
+                                    <select id="type" name="type" class="form-control">
+                                        <option value="Repair">Repair</option>
+                                        <option value="Install">Install</option>
+                                        <option value="Service">Service</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-3 multi-horizontal" data-for="phone">
+                                <div class="form-group">
+                                    <label>Issue</label>
+                                    <select id="type" name="issus" class="form-control">
+                                        <option value="AC/Heater">AC/Heater</option>
+                                        <option value="Electrical">Electrical</option>
+                                        <option value="Toilet">Toilet</option>
+                                        <option value="Electrical">Electrical</option>
+                                        <option value="Refrigerator">Refrigerator</option>
+                                        <option value="WaterHeater">WaterHeater</option>
+                                        <option value="Awning">Awning</option>
+                                        <option value="Slide Out">Slide Out</option>
+                                        <option value="Roof">Roof</option>
+                                        <option value="Vent">Vent</option>
+                                        <option value="Bearing Pack">Bearing Pack</option>
+                                        <option value="Fresh Water Tank">Fresh Water Tank</option>
+                                        <option value="gray Tank">Gray Tank</option>
+                                        <option value="Black Tank">Black Tank</option>
+                                        <option value="Other">Other</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 multi-horizontal" data-for="phone">
+                            
+                        </div>
+                        <div class="form-group" data-for="message">
+                            <label>A short description of what we can help you with.</label>
+                            <textarea type="text" class="form-control" name="desc" rows="7"
+                            data-form-field="Message" maxlength="400">
+                        </textarea>
+                    </div>
+
+                    <!--Not Robot-->
+                    <script src='https://www.google.com/recaptcha/api.js'></script>
+                    <div class="g-recaptcha" data-sitekey=6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI></div>
+                    <!--Not Robot-->
+
+                    <div style="display: flex;">
+                        <button type="submit" class="loginBtn">SUBMIT</button>
+                    </div>
+                </form>
+            </div>
+            </div>
+        </div>
+    </div>
+    <!-- screenBox -->
+
+
+    <!-- bottom -->
+    <div class="bottomBar">
+        <div class="bottomBarBox">
+            <h3>CONTACT US</h3>
+            <h4>Business Number: (661)-618-1886</h4>
+            <h4>Fax Number: 661-362-8090</h4>
+            <h4>Email: scrv8@yahoo.com</h4>
+
+            <h3>SOCIAL MEDIA</h3>
+            <div class="mediaBox">
+                <a href="https://www.facebook.com/SantaClaritaRV" class="btn btn-social-icon btn-facebook">
+                    <span class="fa fa-facebook"></span>
+                </a>
+            </div>
+            <div class="mediaBox">
+                <a href="https://www.yelp.com/biz/santa-claritas-rv-mobile-service-santa-clarita?osq=RV+Mobile+Repair"
+                    class="btn btn-social-icon btn-yelp yelp">
+                    <span class="fa fa-yelp"></span>
+                </a>
+            </div>
+            <p>© 2020 Santa Clarita RV Mobile Service. All rights reserved.</p>
+        </div>
+    </div>
+
+</body>
+
+</html>
